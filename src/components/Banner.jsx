@@ -1,5 +1,4 @@
 import React from 'react'
-import { results } from "../MovieData"
 
 function Banner() {
   let [firstMovie, setMovie] = React.useState("");

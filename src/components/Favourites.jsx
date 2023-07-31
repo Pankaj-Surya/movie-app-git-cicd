@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react'
 import NavBar from './NavBar'
 import Pagination from './Pagination'
 
@@ -47,7 +46,7 @@ function Favourites() {
 
   //add that movie which not present in fav Array (filter the movie)
   function removeFromFavourites(movie) {
-    let newArr = favourites.filter((m) => m.id != movie.id)
+    let newArr = favourites.filter((m) => m.id !== movie.id)
     setFavourites([...newArr]);
     localStorage.setItem("imdb", JSON.stringify(newArr))
 
@@ -58,27 +57,27 @@ function Favourites() {
   let filteredMovies = []
 
   filteredMovies = curGenre == "All Genres" ? favourites
-    : favourites.filter((movie) => genreids[movie.genre_ids[0]] == curGenre);
+    : favourites.filter((movie) => genreids[movie.genre_ids[0]] === curGenre);
 
 
   //sorting --> based on rating
-  if (rating == 1) {
+  if (rating === 1) {
     filteredMovies = filteredMovies.sort(function (objA, objB) {
       return objA.vote_average - objB.vote_average
     })
 
-  } else if (rating == -1) {
+  } else if (rating === -1) {
     filteredMovies = filteredMovies.sort(function (objA, objB) {
       return objB.vote_average - objA.vote_average
     })
   }
 
   //sorting --> based on popularity
-  if (popularity == 1) {
+  if (popularity === 1) {
     filteredMovies = filteredMovies.sort(function (objA, objB) {
       return objA.popularity - objB.popularity
     })
-  } else if (popularity == -1) {
+  } else if (popularity === -1) {
     filteredMovies = filteredMovies.sort(function (objA, objB) {
       return objB.popularity - objA.popularity
     })
@@ -116,7 +115,7 @@ function Favourites() {
       <div className='mt-4 px-2 flex justify-center flex-wrap space-x-2'>
         {
           genres.map((genre, id) =>
-            <button key={id} className={curGenre == genre ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold' :
+            <button key={id} className={curGenre === genre ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold' :
               'm-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'}
               onClick={() => setCurrGenre(genre)}>
               {genre}
@@ -174,13 +173,13 @@ function Favourites() {
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
                         <div className='flex'>
-                          <img src='https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-up-arrows-those-icons-lineal-those-icons-3.png' className='mr-2 cursor-pointer'
+                          <img src='https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-up-arrows-those-icons-lineal-those-icons-3.png' alt='dddd' className='mr-2 cursor-pointer'
                             onClick={() => {
                               setPopularity(0)
                               setRating(-1)
                             }} />
                           Rating
-                          <img src='https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-4.png'
+                          <img src='https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-4.png' alt='ssss'
                             className='ml-2 mr-2'
                             onClick={() => {
                               setPopularity(0)
@@ -194,6 +193,7 @@ function Favourites() {
                       >
                         <div className='flex'>
                           <img src='https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-up-arrows-those-icons-lineal-those-icons-3.png'
+                            alt='sssd'
                             className='mr-2'
                             onClick={() => {
                               setRating(0)

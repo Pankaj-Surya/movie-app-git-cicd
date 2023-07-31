@@ -41,7 +41,7 @@ function MovieList(props) {
     
     //add that movie which not present in fav Array (filter the movie)
     function removeFromFavourites(movie){
-        let newArr = favourites.filter((m)=> m.id != movie.id)
+        let newArr = favourites.filter((m)=> m.id !== movie.id)
         setFavourites([...newArr]);
         localStorage.setItem("imdb",JSON.stringify(newArr))
         
@@ -68,7 +68,7 @@ function MovieList(props) {
 
                     {/* using map */}
                     {
-                        movies == "" ? <h1>Movie yet to come </h1> :
+                        movies === "" ? <h1>Movie yet to come </h1> :
                             <>
                                 {movies.map((movieObj, idx) => {
                                     return (
@@ -88,8 +88,8 @@ function MovieList(props) {
                                                 onMouseLeave={() => setHover("")}
                                             >
                                                 {
-                                                    hover == movieObj.id && <>{
-                                                        !favourites.find((m) => m.id == movieObj.id) ?
+                                                    hover === movieObj.id && <>{
+                                                        !favourites.find((m) => m.id === movieObj.id) ?
                                                             <div className='absolute top-2 right-2 p-2 bg-gray-800 rounded-xl text-xl  cursor-pointer'
                                                                 onClick={() => { addToFavourites(movieObj) }}>😍</div>
                                                             :

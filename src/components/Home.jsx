@@ -12,7 +12,7 @@ function Home() {
    setpageNumber((pageNo) => pageNo+1)
   }
   function decPageNumber(){
-    if (pageNo == 1) {
+    if (pageNo === 1) {
       return;
   }
   setpageNumber((pageNo) =>pageNo-1)  
